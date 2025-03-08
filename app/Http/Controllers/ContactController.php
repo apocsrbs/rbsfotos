@@ -27,7 +27,7 @@ class ContactController extends Controller
         ]);
 
         try {
-            Mail::to(config('mail.from.address'))->send(new ContactFormMail($validated));
+            Mail::to('rene.soerensen@gmail.com')->send(new ContactFormMail($validated));
             
             return response()->json([
                 'message' => 'Tak for din henvendelse! Jeg vender tilbage hurtigst muligt.'

@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Fotografi af børn, bryllupper og andre livsstore begivenheder. Tag en pause fra hverdagen og få en pause i tiden. Jeg er en professionel fotograf, der kan optage alle de smukke øjeblikke, som du vil have gemt for altid.">
 
-<title>{{ env('APP_NAME') }}</title>
+<title>{{ $title ?? env('APP_NAME') }}</title>
 
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" media="all" />
