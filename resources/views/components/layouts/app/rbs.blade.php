@@ -9,7 +9,7 @@
     @stack('styles')
 </head>
 <body>
-    <div class="relative min-h-screen w-full overflow-hidden">
+    <div class="relative w-full overflow-hidden">
         <!-- Logo i toppen -->
         <div class="fixed left-8 top-8 z-20">
             <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo.svg') }}" alt="Logo" class="h-24 w-auto dark:invert drop-shadow-lg"></a>
@@ -25,11 +25,145 @@
                 </ul>
             </nav>
         </div>
+    </div>
 
-        {{ $slot }}
+    {{ $slot }}
+
+    <div class="h-auto lg:h-[50vh]">
+        <div id="about" class="relative bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto">
+                <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+                    <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2 scale-x-[-1]"
+                        fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                        <polygon points="50,0 100,0 50,100 0,100"></polygon>
+                    </svg>
+
+                    <div class="pt-1"></div>
+
+                    <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                        <div class="text-center lg:text-left">
+                            <h2 class="my-6 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl md:text-4xl">
+                                Kontakt mig
+                            </h2>
+
+                            <p class="text-gray-900">
+                            Du kan kontakte mig på telefon eller email, og jeg vil vende tilbage hurtigst muligt.
+                            <br /><br />
+                            Jeg har fotostudie i Karup by, hvor det er muligt at få taget portrætter efter aftale.
+                            <br /><br />
+                            <strong>Åbningstider:</strong><br />
+                            Fredage: 14 - 17<br />
+                            Øvrige dage: Efter aftale
+                            </p>
+                        </div>
+                    </main>
+                </div>
+            </div>
+            <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-teal-500 flex items-center justify-center py-8 lg:py-0">
+                <div class="p-8 w-full max-w-xl">
+                    <form id="contactForm" class="space-y-3">
+                        @csrf
+                        
+                        <div class="relative">
+                            <input type="text" id="name" name="name" placeholder="Navn" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-indigo-500">
+                            <span class="text-red-500 text-sm hidden" data-error="name"></span>
+                        </div>
+
+                        <div class="relative">
+                            <input type="email" id="email" name="email" placeholder="Email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-indigo-500">
+                            <span class="text-red-500 text-sm hidden" data-error="email"></span>
+                        </div>
+
+                        <div class="relative">
+                            <input type="tel" id="phone" name="phone" placeholder="Telefon" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-indigo-500">
+                            <span class="text-red-500 text-sm hidden" data-error="phone"></span>
+                        </div>
+
+                        <div class="relative">
+                            <textarea id="message" name="message" rows="3" placeholder="Besked" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-indigo-500"></textarea>
+                            <span class="text-red-500 text-sm hidden" data-error="message"></span>
+                        </div>
+
+                        <div id="formMessage" class="hidden rounded-lg p-4 text-center"></div>
+
+                        <button type="submit" id="submitButton" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-200">
+                            Send besked
+                        </button>
+                    </form>
+
+                    <script>
+                        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+                            e.preventDefault();
+                            
+                            const form = this;
+                            const submitButton = form.querySelector('#submitButton');
+                            const formMessage = document.getElementById('formMessage');
+                            const errorSpans = form.querySelectorAll('[data-error]');
+                            
+                            // Reset error messages
+                            errorSpans.forEach(span => span.classList.add('hidden'));
+                            formMessage.classList.add('hidden');
+                            
+                            // Disable submit button
+                            submitButton.disabled = true;
+                            submitButton.textContent = 'Sender...';
+                            
+                            try {
+                                const response = await fetch('/contact', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                    },
+                                    body: JSON.stringify({
+                                        name: form.name.value,
+                                        email: form.email.value,
+                                        phone: form.phone.value,
+                                        message: form.message.value
+                                    })
+                                });
+                                
+                                const data = await response.json();
+                                
+                                if (response.ok) {
+                                    // Success
+                                    formMessage.textContent = data.message;
+                                    formMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+                                    formMessage.classList.add('bg-green-100', 'text-green-700');
+                                    form.reset();
+                                } else {
+                                    // Validation errors
+                                    if (data.errors) {
+                                        Object.keys(data.errors).forEach(field => {
+                                            const errorSpan = form.querySelector(`[data-error="${field}"]`);
+                                            if (errorSpan) {
+                                                errorSpan.textContent = data.errors[field][0];
+                                                errorSpan.classList.remove('hidden');
+                                            }
+                                        });
+                                    }
+                                    
+                                    formMessage.textContent = data.message || 'Der skete en fejl. Prøv venligst igen.';
+                                    formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+                                    formMessage.classList.add('bg-red-100', 'text-red-700');
+                                }
+                            } catch (error) {
+                                formMessage.textContent = 'Der skete en fejl. Prøv venligst igen.';
+                                formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+                                formMessage.classList.add('bg-red-100', 'text-red-700');
+                            }
+                            
+                            // Re-enable submit button
+                            submitButton.disabled = false;
+                            submitButton.textContent = 'Send besked';
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
     </div>
     
-    <footer class="w-full py-14 text-white">
+    <footer class="w-full min-h-[50vh] py-14 text-white">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto">
                 <a href="{{ route('home') }}" class="flex justify-center">

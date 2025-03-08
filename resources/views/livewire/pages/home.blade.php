@@ -64,7 +64,7 @@ new class extends Component {
                                 Om mig
                             </h2>
 
-                            <p class="text-gray-900">
+                            <p class="text-gray-900 md:w-[90%] sm:w-full">
                                 Jeg er fotograf og har været det i ca. 10 år, jeg finder stor fornøjelse i at tage billeder. Især når man lige får et specielt godt billede med hjem, hvor lyset lige er helt rigtigt og alt bare harmonerer!
                                 <br /><br />
                                 Portrætter af folk, lidt på afstand, synes jeg er meget interessant, for min oplevelse er, at man fanger noget ægte.
@@ -111,7 +111,9 @@ new class extends Component {
                 <div class="text-white">
                     <h2 class="text-2xl font-bold mb-4">En passion for at fange livets første øjeblikke</h2>
                     <p class="leading-relaxed">
-                        Jeg foreviger jeg de små, dyrebare øjeblikke, hvor et nyt liv udfolder sig. De første smil, de små hænder og den umiskendelige følelse af kærlighed – alt sammen indfanget i billeder, der bevarer minderne for altid.
+                        Jeg foreviger jeg de små, dyrebare øjeblikke, hvor et nyt liv udfolder sig. De første smil, de små hænder og den umiskendelige følelse af kærlighed – alt sammen indfanget i billeder, der bevarer minderne for altid.<br />
+                        <br />
+                        Skal I have taget billeder af jeres lille nye familiemedlem?
                     </p>
                 </div>
                 <div class="relative h-[400px]">
@@ -127,7 +129,7 @@ new class extends Component {
     </div> -->
 
     <div
-        class="relative h-[60rem] bg-fixed bg-center bg-cover backdrop-saturate-200"
+        class="relative h-[40rem] bg-fixed bg-center bg-cover backdrop-saturate-200"
         style="background-image: url({{ asset('assets/images/backgrounds/_BS_7146.webp') }});">
     </div>
 

@@ -19,4 +19,6 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'submit']);
+
 require __DIR__.'/auth.php';
