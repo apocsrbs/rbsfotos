@@ -1,4 +1,4 @@
-<x-layouts.app.test>
+<x-layouts.app.rbs>
     <!-- ALVA -->
     <div id="bg1" class="min-h-screen w-full bg-cover bg-center bg-no-repeat bg-image bg-local lg:bg-fixed" style="background-image: url('{{ asset('assets/images/backgrounds/_BS_7141.webp') }}')">
         <div class="absolute left-1/2 bottom-15 z-10 -translate-x-1/2 text-center">
@@ -86,4 +86,4 @@
     <div id="bg4" class="min-h-screen w-full bg-cover bg-center bg-no-repeat bg-image bg-local lg:bg-fixed" style="background-image: url('{{ asset('assets/images/backgrounds/_BS_7146.webp') }}')">
         
     </div>
-</x-layouts.app.test>
+</x-layouts.app.rbs>
