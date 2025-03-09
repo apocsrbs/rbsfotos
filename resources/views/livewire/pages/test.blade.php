@@ -1,6 +1,6 @@
 <x-layouts.app.test>
     <!-- ALVA -->
-    <div id="bg1" class="min-h-screen w-full bg-cover bg-center bg-no-repeat bg-image bg-fixed md:bg-local" style="background-image: url('{{ asset('assets/images/backgrounds/_BS_7141.webp') }}')">
+    <div id="bg1" class="min-h-screen w-full bg-cover bg-center bg-no-repeat bg-image bg-fixed parallax-bg" style="background-image: url('{{ asset('assets/images/backgrounds/_BS_7141.webp') }}')">
         <div class="absolute left-1/2 bottom-15 z-10 -translate-x-1/2 text-center">
             <div class="max-w-2xl rounded-xl bg-white/20 shadow-lg ring-1 ring-black/5 bg-slate/40 p-8 backdrop-blur-sm">
                 <h1 class="mb-4 text-6xl font-semibold text-black" style="font-family: 'Rouge Script', cursive;">Velkommen</h1>
@@ -48,7 +48,7 @@
     </div>
 
     <!-- AUDI -->
-    <div id="bg2" class="min-h-screen w-full bg-cover bg-center bg-no-repeat bg-image bg-fixed md:bg-local hidden md:block" style="background-image: url('{{ asset('assets/images/backgrounds/AudiA5-HøfdeQ-facebook.webp') }}')">
+    <div id="bg2" class="min-h-screen w-full bg-cover bg-center bg-no-repeat bg-image bg-fixed parallax-bg hidden md:block" style="background-image: url('{{ asset('assets/images/backgrounds/AudiA5-HøfdeQ-facebook.webp') }}')">
         <div class="relative fixed top-150 w-[40vw] left-[20vw] rounded-xl bg-white/20 shadow-lg ring-1 ring-black/5 bg-slate/40 p-8 backdrop-blur-sm">
             <p class="text-white">
                 En sensommerdag blev jeg spurgt, om jeg ville tage nogle portrætter af et par.<br />Vi lagde os ret hurtigt fast på, at vi skulle til Høfde Q.<br />
@@ -59,7 +59,7 @@
     </div>
 
     <!-- CYKLING -->
-    <div id="bg3" class="min-h-96 max-h-96 w-full bg-cover bg-no-repeat bg-image bg-fixed md:bg-local bg-[center_0%] sm:bg-[90%_center]" 
+    <div id="bg3" class="min-h-96 max-h-96 w-full bg-cover bg-no-repeat bg-image bg-fixed parallax-bg bg-[center_0%] sm:bg-[90%_center]" 
         style="background-image: url('{{ asset('assets/images/backgrounds/_BS_1813-2.webp') }}')">
     </div>
 
@@ -83,7 +83,7 @@
     </div>
 
     <!-- LIVA -->
-    <div id="bg4" class="min-h-screen w-full bg-cover bg-center bg-no-repeat bg-image bg-fixed md:bg-local" style="background-image: url('{{ asset('assets/images/backgrounds/_BS_7146.webp') }}')">
+    <div id="bg4" class="min-h-screen w-full bg-cover bg-center bg-no-repeat bg-image bg-fixed parallax-bg" style="background-image: url('{{ asset('assets/images/backgrounds/_BS_7146.webp') }}')">
         
     </div>
 </x-layouts.app.test>
