@@ -89,7 +89,7 @@
                 <div class="text-center mb-10">
                     <div class="space-y-2">
                         <p><flux:icon name="device-phone-mobile" class="w-5 h-5 inline-block" /> <a href="tel:+4542800002" class="text-white hover:text-indigo-400">+45 42 80 00 02</a></p>
-                        <p><flux:icon name="at-symbol" class="w-5 h-5 inline-block" /> kontakt@rbsfotos.dk</p>
+                        <!-- <p><flux:icon name="at-symbol" class="w-5 h-5 inline-block" /> kontakt@rbsfotos.dk</p> -->
                         <p><flux:icon name="map-pin" class="w-5 h-5 inline-block" /> Bredgade 10, 7470 Karup</p>
                     </div>
                 </div>
