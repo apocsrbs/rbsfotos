@@ -1,34 +1,18 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="da" class="dark">
 <head>
-    @include('partials.head')
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fotografi af børn, bryllupper og andre livsstore begivenheder. Tag en pause fra hverdagen og få en pause i tiden. Jeg er en professionel fotograf, der kan optage alle de smukke øjeblikke, som du vil have gemt for altid.">
+    <title>RBS Fotos</title>
 
-    @livewireStyles
-    @livewireScripts
-
-    @stack('styles')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <div class="relative w-full overflow-hidden">
-        <!-- Logo i toppen -->
-        <div class="fixed left-8 top-8 z-20">
-            <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo.svg') }}" alt="Logo" class="h-24 w-auto dark:invert drop-shadow-lg"></a>
-        </div>
-
-        <!-- Hovedmenu -->
-        <div class="fixed right-8 top-8 z-20 hidden">
-            <nav>
-                <ul class="flex items-center gap-8 text-lg font-medium text-white drop-shadow-lg">
-                    <li><a href="/" class="hover:text-gray-200">Hjem</a></li>
-                    <li><a href="/galleri" class="hover:text-gray-200">Galleri</a></li>
-                    <li><a href="/kontakt" class="hover:text-gray-200">Kontakt</a></li>
-                </ul>
-            </nav>
-        </div>
+    <div class="fixed left-8 top-8 z-20">
+        <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo.svg') }}" alt="Logo" class="h-24 w-auto dark:invert drop-shadow-lg"></a>
     </div>
-
     {{ $slot }}
-
     <div class="h-auto lg:h-[50vh]">
         <div id="about" class="relative bg-white overflow-hidden">
             <div class="max-w-7xl mx-auto">
@@ -90,80 +74,11 @@
                             Send besked
                         </button>
                     </form>
-
-                    <script>
-                        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-                            e.preventDefault();
-                            
-                            const form = this;
-                            const submitButton = form.querySelector('#submitButton');
-                            const formMessage = document.getElementById('formMessage');
-                            const errorSpans = form.querySelectorAll('[data-error]');
-                            
-                            // Reset error messages
-                            errorSpans.forEach(span => span.classList.add('hidden'));
-                            formMessage.classList.add('hidden');
-                            
-                            // Disable submit button
-                            submitButton.disabled = true;
-                            submitButton.textContent = 'Sender...';
-                            
-                            try {
-                                const response = await fetch('/contact', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                                    },
-                                    body: JSON.stringify({
-                                        name: form.name.value,
-                                        email: form.email.value,
-                                        phone: form.phone.value,
-                                        message: form.message.value
-                                    })
-                                });
-                                
-                                const data = await response.json();
-                                
-                                if (response.ok) {
-                                    // Success
-                                    formMessage.textContent = data.message;
-                                    formMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700');
-                                    formMessage.classList.add('bg-green-100', 'text-green-700');
-                                    form.reset();
-                                } else {
-                                    // Validation errors
-                                    if (data.errors) {
-                                        Object.keys(data.errors).forEach(field => {
-                                            const errorSpan = form.querySelector(`[data-error="${field}"]`);
-                                            if (errorSpan) {
-                                                errorSpan.textContent = data.errors[field][0];
-                                                errorSpan.classList.remove('hidden');
-                                            }
-                                        });
-                                    }
-                                    
-                                    formMessage.textContent = data.message || 'Der skete en fejl. Prøv venligst igen.';
-                                    formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
-                                    formMessage.classList.add('bg-red-100', 'text-red-700');
-                                }
-                            } catch (error) {
-                                formMessage.textContent = 'Der skete en fejl. Prøv venligst igen.';
-                                formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
-                                formMessage.classList.add('bg-red-100', 'text-red-700');
-                            }
-                            
-                            // Re-enable submit button
-                            submitButton.disabled = false;
-                            submitButton.textContent = 'Send besked';
-                        });
-                    </script>
                 </div>
             </div>
         </div>
     </div>
-    
-    <footer class="w-full min-h-[50vh] py-14 text-white">
+    <footer class="w-full min-h-[50vh] py-14 text-white bg-black">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto">
                 <a href="{{ route('home') }}" class="flex justify-center">
@@ -195,10 +110,5 @@
             </div>
         </div>
     </footer>
-<script>
-document.addEventListener('scroll', () => {
-    document.documentElement.style.setProperty('--scroll', window.pageYOffset);
-});
-</script>
 </body>
 </html>
