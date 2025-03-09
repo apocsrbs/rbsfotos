@@ -7,6 +7,8 @@ Route::get('/', function () {
     return view('livewire.pages.home');
 })->name('home');
 
+Route::view('test', 'livewire.pages.test')->name('test');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

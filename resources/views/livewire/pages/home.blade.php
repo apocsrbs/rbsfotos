@@ -33,9 +33,7 @@ new class extends Component {
 <x-layouts.app.rbs>
     <div
         class="relative h-screen bg-fixed bg-center bg-cover backdrop-saturate-200"
-        style="
-            background-image: url({{ asset('assets/images/backgrounds/_BS_7141.webp') }});
-        ">
+        style="background-image: url({{ asset('assets/images/backgrounds/_BS_7141.webp') }});">
         <div class="absolute left-1/2 top-150 z-10 -translate-x-1/2 text-center">
             <div class="max-w-2xl rounded-xl bg-white/20 shadow-lg ring-1 ring-black/5 bg-slate/40 p-8 backdrop-blur-sm">
                 <h1 class="mb-4 text-6xl font-semibold text-black" style="font-family: 'Rouge Script', cursive;">Velkommen</h1>
