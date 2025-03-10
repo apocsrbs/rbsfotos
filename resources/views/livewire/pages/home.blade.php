@@ -70,7 +70,7 @@
                 <div class="text-white">
                     <h2 class="text-2xl font-bold mb-4">En passion for at fange livets første øjeblikke</h2>
                     <p class="leading-relaxed">
-                        Jeg foreviger jeg de små, dyrebare øjeblikke, hvor et nyt liv udfolder sig. De første smil, de små hænder og den umiskendelige følelse af kærlighed – alt sammen indfanget i billeder, der bevarer minderne for altid.<br />
+                        Jeg foreviger de små, dyrebare øjeblikke, hvor et nyt liv udfolder sig. De første smil, de små hænder og den umiskendelige følelse af kærlighed – alt sammen indfanget i billeder, der bevarer minderne for altid.<br />
                         <br />
                         Skal I have taget billeder af jeres lille nye familiemedlem?
                     </p>
